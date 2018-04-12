@@ -1,0 +1,16 @@
+
+
+
+library(gplots)
+data <- read.delim(“~/yourmatrix.txt")
+rnames <- data[,1]
+firstdata <- data.matrix(data[,2:ncol(data)])
+rownames(firstdata) <- rnames[[1]]
+View(firstdata)
+data.prop <- firstdata/rowSums(firstdata)
+
+breaks = seq(0, 6, by = 0.01)
+colfunc <- colorRampPalette(c("white", "#D40043"))
+sidecolo <- c("#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#6B6D70","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C","#24A79C")
+ysidecol <- c("#3E4D9D","#3E4D9D","#633658","#D40043","#DB9140","#D40043","#00742E","#3E4D9D","#633658","#D40043","#E7513D","#E7513D","#0068A1","#0068A1","#E7513D","#E7513D","#D40043","#DB9140","#745428","#633658","#D40043","#E7513D","#3E4D9D","#DB9140","#3E4D9D","#3E4D9D","#D40043","#3E4D9D","#D40043","#D40043","#D40043","#E4A7AD","#3E4D9D","#E7513D","#D40043","#D40043","#D40043","#DB9140")
+heatmap.2(firstdata, trace = "none",  density.info = "none",  key = TRUE,  keysize=0.75, key.par = list(cex=0.5), key.xlab = "Realtive abundance", key.title = "", dendrogram='both',sepwidth=0.5, col=colfunc,  cexRow=0.8, cexCol = 0.6, breaks = breaks, ColSideColors = sidecolo, RowSideColors = ysidecol)
